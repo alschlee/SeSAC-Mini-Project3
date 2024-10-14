@@ -1,0 +1,30 @@
+.avatar-selector {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.avatar-image {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border 0.3s, transform 0.3s;
+    margin: 0 10px;
+}
+
+.avatar-image:hover {
+    border: 2px solid #bfbfbf;
+    transform: scale(1.05);
+}
+
+.avatar-image.selected {
+    border: 2px solid #003366;
+    transform: scale(1.1);
+}
+
+
+h3 {
+    text-align: center;
+}
