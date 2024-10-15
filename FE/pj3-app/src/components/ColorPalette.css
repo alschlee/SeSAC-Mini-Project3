@@ -5,6 +5,7 @@
 .color-options {
     display: flex;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 .color-option {
@@ -13,12 +14,17 @@
     border-radius: 50%;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border 0.3s;
+    transition: transform 0.3s ease, border 0.3s ease;
 }
 
 .color-option:hover {
-    border: 2px solid #000;
     transform: scale(1.1);
+    border: 2px solid #003366;
+}
+
+.color-option.selected {
+    transform: scale(1.2);
+    border: 2px solid black;
 }
 
 .color-palette h4 {
@@ -26,11 +32,4 @@
     line-height: 1.2;
     margin: 0;
     font-weight: normal;
-}
-
-
-.color-options {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
 }

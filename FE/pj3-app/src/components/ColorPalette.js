@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import './ColorPalette.css';
 
 const ColorPalette = ({ onColorSelect }) => {
-    const colors = ['blue', 'pink', 'gold', 'green', 'purple'];
+    const colors = [
+        { name: 'Blue', code: '#006BFF' },
+        { name: 'Pink', code: '#FF4E88' },
+        { name: 'Yellow', code: '#F3C623' },
+        { name: 'Green', code: '#399918' },
+        { name: 'Purple', code: '#BF2EF0' },
+    ];
     const [selectedColor, setSelectedColor] = useState(null);
 
     const handleColorSelect = (color) => {
-        setSelectedColor(color);
+        setSelectedColor(color.code);
         onColorSelect(color);
     };
 
@@ -16,11 +22,10 @@ const ColorPalette = ({ onColorSelect }) => {
             <div className="color-options">
                 {colors.map((color) => (
                     <div
-                        key={color}
-                        className="color-option"
-                        style={{ 
-                            backgroundColor: color,
-                            border: selectedColor === color ? '2px solid #000' : '2px solid transparent'
+                        key={color.name}
+                        className={`color-option ${selectedColor === color.code ? 'selected' : ''}`}
+                        style={{
+                            backgroundColor: color.code,
                         }}
                         onClick={() => handleColorSelect(color)}
                     />
