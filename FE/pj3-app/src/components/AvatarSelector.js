@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AvatarSelector.css';
 
-const AvatarSelector = ({ onSelect }) => { 
+const AvatarSelector = ({ onSelect }) => {
     const [selectedAvatar, setSelectedAvatar] = useState(null);
+    const [userName, setUserName] = useState('');
+
     const avatars = [
         { id: 1, src: '/images/avatar1.jpg' },
         { id: 2, src: '/images/avatar2.jpg' },
@@ -16,11 +18,16 @@ const AvatarSelector = ({ onSelect }) => {
         onSelect(src);
     };
 
-    const data = "이진경";
+    useEffect(() => {
+        fetch('http://localhost:8000/users')
+            .then(response => response.json())
+            .then(data => setUserName(data.name))
+            .catch(error => console.error('Error fetching user name:', error));
+    }, []);
 
     return (
         <div>
-            <h3>step1. <span style={{ color: '#708090' }}>{data}</span>  님의 캐릭터를 선택해주세요</h3>
+            <h3>step1. <span style={{ color: '#708090' }}>{userName}</span> 님의 캐릭터를 선택해주세요</h3>
             <div className="avatar-selector">
                 {avatars.map((avatar) => (
                     <img

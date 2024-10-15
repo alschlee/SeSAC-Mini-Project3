@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './AvatarForm.css';
 import ColorPalette from './ColorPalette';
-
-const data = "이진경" /* 백엔드에서 받아 올 data */
 
 const AvatarForm = ({
     onSubmit,
@@ -15,6 +13,15 @@ const AvatarForm = ({
     setFavoriteColor,
     onReset,
 }) => {
+    const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        fetch('http://localhost:8000/users')
+            .then(response => response.json())
+            .then(data => setUserName(data.name))
+            .catch(error => console.error('Error fetching user name:', error));
+    }, []);
+
     const songOptions = [
         "Supernatural",
         "How Sweet",
@@ -26,7 +33,7 @@ const AvatarForm = ({
 
     return (
         <>
-            <h3>step2. <span style={{ color: '#708090' }}>{data}</span>  님의 캐릭터를 소개해주세요</h3>
+            <h3>step2. <span style={{ color: '#708090' }}>{userName}</span> 님의 캐릭터를 소개해주세요</h3>
 
             <form className="avatar-form" onSubmit={(e) => { onSubmit(e); }}>
                 <input
