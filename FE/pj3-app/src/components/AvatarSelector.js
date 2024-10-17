@@ -6,11 +6,11 @@ const AvatarSelector = ({ onSelect }) => {
     const [userName, setUserName] = useState('');
 
     const avatars = [
-        { id: 1, src: '/images/avatar1.jpg' },
-        { id: 2, src: '/images/avatar2.jpg' },
-        { id: 3, src: '/images/avatar3.jpg' },
-        { id: 4, src: '/images/avatar4.jpg' },
-        { id: 5, src: '/images/avatar5.jpg' },
+        { id: 1, src: `${process.env.PUBLIC_URL}/images/avatar1.svg` },
+        { id: 2, src: `${process.env.PUBLIC_URL}/images/avatar2.svg` },
+        { id: 3, src: `${process.env.PUBLIC_URL}/images/avatar3.svg` },
+        { id: 4, src: `${process.env.PUBLIC_URL}/images/avatar4.svg` },
+        { id: 5, src: `${process.env.PUBLIC_URL}/images/avatar5.svg` },
     ];
 
     const handleAvatarClick = (src) => {
@@ -34,7 +34,7 @@ const AvatarSelector = ({ onSelect }) => {
                         key={avatar.id}
                         src={avatar.src}
                         alt={`Avatar ${avatar.id}`}
-                        className={`avatar-image ${selectedAvatar === avatar.src ? 'selected' : ''}`} 
+                        className={`avatar-image ${selectedAvatar === avatar.src ? 'selected' : ''}`}
                         onClick={() => handleAvatarClick(avatar.src)}
                     />
                 ))}
