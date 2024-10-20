@@ -18,8 +18,7 @@ const App = () => {
         setSelectedAvatar(avatar);
     };
 
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
+    const handleFormSubmit = () => {
         setLoading(true);
         setShowPreview(false);
 
@@ -29,7 +28,6 @@ const App = () => {
         }, 2000);
     };
 
-    // 캐릭터 초기화 함수
     const handleReset = () => {
         setSelectedAvatar(null);
         setNickname('');
@@ -43,8 +41,8 @@ const App = () => {
     return (
         <>
             <div className="header-container">
-                <h2> Welcome To Bunnies House! </h2>
-                <h2> Bunnies House에 초대할 캐릭터를 만들어보세요 </h2>
+                <h2>Welcome To Bunnies House!</h2>
+                <h2>Bunnies House에 초대할 캐릭터를 만들어보세요</h2>
             </div>
 
             <div className="app-container">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './AvatarForm.css';
 import ColorPalette from './ColorPalette';
 
@@ -13,14 +13,36 @@ const AvatarForm = ({
     setFavoriteColor,
     onReset,
 }) => {
-    const [userName, setUserName] = useState('');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        const characterData = {
+            nickname: nickname,
+            favorite_song: favoriteSong,
+            favorite_food: favoriteFood,
+        };
 
-    useEffect(() => {
-        fetch('http://localhost:8000/users')
-            .then(response => response.json())
-            .then(data => setUserName(data.name))
-            .catch(error => console.error('Error fetching user name:', error));
-    }, []);
+        fetch('http://localhost:8000/create_character', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(characterData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Character created successfully:', data);
+            onSubmit();
+        })
+        .catch(error => {
+            console.error('Error creating character:', error);
+        });
+    };
 
     const songOptions = [
         "Supernatural",
@@ -33,9 +55,9 @@ const AvatarForm = ({
 
     return (
         <>
-            <h3>step2. <span style={{ color: '#708090' }}>{userName}</span> 님의 캐릭터를 소개해주세요</h3>
+            <h3>step2. 캐릭터를 소개해주세요</h3>
 
-            <form className="avatar-form" onSubmit={(e) => { onSubmit(e); }}>
+            <form className="avatar-form" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="NICKNAME"
