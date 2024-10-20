@@ -22,7 +22,7 @@ const AvatarForm = ({
             favorite_food: favoriteFood,
         };
 
-        fetch('http://localhost:8000/create_character', {
+        fetch(`${process.env.REACT_APP_API_URL}/create_character`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
