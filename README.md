@@ -16,5 +16,4 @@ AWS를 활용하여 서비스 인프라를 구성하고, 응용 프로그램을 
 - 수업 시간에 사용했던 리소스 범주 내에서 구성
 
 ## Result
-![result](https://github.com/user-attachments/assets/4342b388-9655-412c-94b0-310a2bc97e4a)
-
+![result](https://github.com/user-attachments/assets/c8daaf54-86b4-45e0-bb6c-15cbf9c93ca8)
