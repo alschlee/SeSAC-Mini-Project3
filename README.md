@@ -18,3 +18,23 @@ AWS 인프라(ECS, EC2, VPC, RDS)를 사용해 웹 애플리케이션을 배포�
 
 ## Result
 ![result](https://github.com/user-attachments/assets/c8daaf54-86b4-45e0-bb6c-15cbf9c93ca8)
+
+## Project Structure
+```
+📁 SeSAC-Mini-Project3
+├── 📁 FE                         
+│   └── 📁 pj3-app                
+│       ├── Dockerfile           
+│       ├── 📁 public           
+│       └── 📁 src             
+│           ├── App.js            # 메인 애플리케이션 컴포넌트
+│           └── 📁 components     # UI 구성 요소 디렉토리
+│               ├── AvatarForm.js/.css      # 캐릭터 폼 컴포넌트
+│               ├── AvatarPreview.js/.css   # 생성된 캐릭터 컴포넌트
+│               ├── AvatarSelector.js/.css  # 캐릭터 이미지 선택 컴포넌트
+│               └── ColorPalette.js/.css    # 색상 팔레트 컴포넌트
+└── 📁 BE                        
+    ├── Dockerfile               
+    ├── main.py                
+    └── requirements.txt        
+```
